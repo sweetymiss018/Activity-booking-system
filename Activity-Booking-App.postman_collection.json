@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "f54c50e1-9662-40df-82ae-9cc8fc4eabdd",
+		"name": "Activity-Booking-App",
+		"description": "Postman collection for testing Activity Booking App's auth, activities, and booking APIs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41463723"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "For register new User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"test name\",\r\n  \"email\": \"test@example.com\",\r\n  \"phone\": \"9876543233\",\r\n  \"password\": \"test@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To login existing user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sweety@example.com\",\r\n    \"password\": \"Sweety@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activities",
+			"item": [
+				{
+					"name": "To get all listed activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/activities/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To create an activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWI5Njk1MjM0NDc1ZDcyNjViZjQ0YSIsImlhdCI6MTc0NjY0MjI5NywiZXhwIjoxNzQ5MjM0Mjk3fQ.AA-lwdkNVi_wUlQiXSFz16UNlfltgnb1_Bgi86Nu_1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Hiking\",\r\n  \"description\": \"A mountain hiking trip\",\r\n  \"location\": \"Mountain Range\",\r\n  \"dateTime\": \"2025-05-15T10:00:00.000Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/activities/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "To book an activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWI5Njk1MjM0NDc1ZDcyNjViZjQ0YSIsImlhdCI6MTc0NjY0MjI5NywiZXhwIjoxNzQ5MjM0Mjk3fQ.AA-lwdkNVi_wUlQiXSFz16UNlfltgnb1_Bgi86Nu_1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"activityId\": \"681b9919234475d7265bf459\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/bookings/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"bookings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "to get all the activities booked by loggedIn user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWI5Njk1MjM0NDc1ZDcyNjViZjQ0YSIsImlhdCI6MTc0NjY0MjI5NywiZXhwIjoxNzQ5MjM0Mjk3fQ.AA-lwdkNVi_wUlQiXSFz16UNlfltgnb1_Bgi86Nu_1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/bookings/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"bookings",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "to delete a booked activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWI5Njk1MjM0NDc1ZDcyNjViZjQ0YSIsImlhdCI6MTc0NjY0MjI5NywiZXhwIjoxNzQ5MjM0Mjk3fQ.AA-lwdkNVi_wUlQiXSFz16UNlfltgnb1_Bgi86Nu_1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/bookings/681b9ed89bd91b1023388800",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"bookings",
+								"681b9ed89bd91b1023388800"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
