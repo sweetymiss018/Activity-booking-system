@@ -39,7 +39,7 @@ MongoDB
 Installation
 
 Clone the repository
-git clone https://github.com/yourusername/activity-booking-api.git
+git clone https://github.com/sweetymiss018/activity-booking-api.git
 cd activity-booking-api
 
 Install dependencies
